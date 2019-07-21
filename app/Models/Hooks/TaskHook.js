@@ -6,9 +6,12 @@ const Helpers = use('Helpers')
 const TaskHook = (exports = module.exports = {})
 
 TaskHook.sendNewTaskMail = async taskInstance => {
-  if (!taskInstance.user_id && !taskInstance.dirty.user_id) {
-    return
-  }
+  const instanceHaveUser = !!taskInstance.user_id
+  const instanceChanged = !!taskInstance.dirty.user_id
+
+  if (taskInstance.created_at === taskInstance.updated_at) {
+    if (!instanceHaveUser) return
+  } else if (!instanceChanged) return
 
   const { email, username } = await taskInstance.user().fetch()
   const file = await taskInstance.file().fetch()
