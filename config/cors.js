@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports = {
   /*
@@ -16,7 +16,10 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: false,
+  // Definindo quais aplicações podem acessar esta api
+  // origin: ['teste.com.br', 'service.teste.com.br']
+  // Deixando true qualquer um pode acessar, false somente aplicações com a mesma url
+  origin: true,
 
   /*
   |--------------------------------------------------------------------------

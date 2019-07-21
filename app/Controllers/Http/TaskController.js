@@ -22,7 +22,7 @@ class TaskController {
       'due_date',
       'file_id'
     ])
-    const task = await Task.crreate({
+    const task = await Task.create({
       ...data,
       project_id: params.projects_id
     })
